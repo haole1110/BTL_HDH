@@ -50,7 +50,7 @@ struct pcb_t * get_mlq_proc(void) {
 	 * Remember to use lock to protect the queue.
 	 * */
 	pthread_mutex_lock(&queue_lock);
-	int index = MAX_PRIO;
+	int index = MAX_PRIO-1;
 	while (index >= 0 && mlq_ready_queue[index].size == 0){
 		index--;
 	}
@@ -105,5 +105,4 @@ void add_proc(struct pcb_t * proc) {
 	pthread_mutex_unlock(&queue_lock);	
 }
 #endif
-
 
